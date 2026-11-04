@@ -62,6 +62,16 @@ class Workspace:
     def load(self, trace_id: str) -> Trace:
         return self.traces.load(self.resolve_trace_id(trace_id))
 
+    def add_golden_dir(self, directory: Path | str) -> int:
+        """Register another directory of golden sidecars.
+
+        Returns the total number of records known afterwards. Used when running
+        against a corpus that is not one of the defaults - the corpus owns its
+        ground truth, so it has to be consulted for it.
+        """
+        self.golden.extend(directory)
+        return len(self.golden)
+
     def golden_for(self, trace: Trace) -> GoldenRecord | None:
         return self.golden.get(trace.doc_id)
 

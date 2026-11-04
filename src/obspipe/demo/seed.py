@@ -53,6 +53,13 @@ def seed(
     corpus_dir: Path | str = DEMO_CORPUS_DIR,
     log: Callable[[str], None] = print,
 ) -> dict:
+    corpus_dir = Path(corpus_dir)
+    # A corpus carries its own ground truth in <doc>.golden.json sidecars, so
+    # seeding from one must read goldens from it. Relying on the workspace's
+    # default golden directories instead made the outcome depend on whether
+    # data/demo happened to exist on the machine.
+    workspace.add_golden_dir(corpus_dir)
+
     if workspace.feedback.cases():
         raise RuntimeError(
             "The eval dataset is not empty; seeding twice would duplicate every case. "

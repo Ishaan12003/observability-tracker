@@ -202,13 +202,27 @@ class GoldenIndex:
 
     def __init__(self, directories: Iterable[Path | str]) -> None:
         self._records: dict[str, GoldenRecord] = {}
+        self._directories: list[Path] = []
         for directory in directories:
-            root = Path(directory)
-            if not root.is_dir():
-                continue
-            for path in sorted(root.glob(f"*{GOLDEN_SUFFIX}")):
-                record = GoldenRecord.model_validate(json.loads(path.read_text(encoding="utf-8")))
-                self._records[record.doc_id] = record
+            self.extend(directory)
+
+    def extend(self, directory: Path | str) -> None:
+        """Load every golden sidecar under ``directory``.
+
+        A directory that does not exist is skipped rather than raising: the
+        default set spans both corpora and only one of them is committed.
+        """
+        root = Path(directory)
+        self._directories.append(root)
+        if not root.is_dir():
+            return
+        for path in sorted(root.glob(f"*{GOLDEN_SUFFIX}")):
+            record = GoldenRecord.model_validate(json.loads(path.read_text(encoding="utf-8")))
+            self._records[record.doc_id] = record
+
+    @property
+    def directories(self) -> list[Path]:
+        return list(self._directories)
 
     def get(self, doc_id: str) -> GoldenRecord | None:
         return self._records.get(doc_id)
