@@ -1,0 +1,544 @@
+{
+  "backend": "fake",
+  "doc_id": "contract_long_truncated",
+  "failed_step": null,
+  "feedback_notes": null,
+  "final_score": null,
+  "first_degraded_step": "intake",
+  "model": "fake-rules-v1",
+  "source_name": "contract_long_truncated.md",
+  "spans": [
+    {
+      "attributes": {},
+      "computed_confidence": null,
+      "confidence_reason": null,
+      "error_message": null,
+      "error_type": null,
+      "inputs": {
+        "doc_id": "contract_long_truncated"
+      },
+      "kind": "pipeline",
+      "llm_calls": [],
+      "name": "pipeline",
+      "output": null,
+      "self_confidence": null,
+      "status": "ok",
+      "step": null,
+      "suspicion": 0.0,
+      "warnings": [],
+      "worst_severity": null
+    },
+    {
+      "attributes": {
+        "char_count": 11961,
+        "sections": 15,
+        "truncated": true
+      },
+      "computed_confidence": 1.0,
+      "confidence_reason": null,
+      "error_message": null,
+      "error_type": null,
+      "inputs": {
+        "document": "@sha256:<ref>",
+        "max_chars": 12000
+      },
+      "kind": "step",
+      "llm_calls": [],
+      "name": "intake",
+      "output": "@sha256:<ref>",
+      "self_confidence": null,
+      "status": "degraded",
+      "step": "intake",
+      "suspicion": 0.37,
+      "warnings": [
+        {
+          "code": "document_truncated",
+          "field_path": "normalized_text",
+          "message": "Input reduced from 19976 to 11961 chars (budget 12000). Entities past the cut cannot be extracted.",
+          "severity": "warn"
+        }
+      ],
+      "worst_severity": "warn"
+    },
+    {
+      "attributes": {
+        "entities": 2,
+        "hallucinated_spans": 0
+      },
+      "computed_confidence": 1.0,
+      "confidence_reason": "3 of 5 entity families matched a rule.",
+      "error_message": null,
+      "error_type": null,
+      "inputs": {
+        "intake": "@sha256:<ref>"
+      },
+      "kind": "step",
+      "llm_calls": [
+        {
+          "backend": "fake",
+          "confidence_reason": "3 of 5 entity families matched a rule.",
+          "finish_reason": null,
+          "model": "fake-rules-v1",
+          "parsed": {
+            "amounts": [],
+            "confidence_reason": "3 of 5 entity families matched a rule.",
+            "dates": [],
+            "identifiers": [
+              {
+                "kind": "po_number",
+                "value": "nents"
+              }
+            ],
+            "key_terms": [
+              "warranty",
+              "purchase order"
+            ],
+            "parties": [
+              {
+                "name": "Aurelian Components SA",
+                "organization": true,
+                "role": "party"
+              },
+              {
+                "name": "Pinnacle Motorworks Inc",
+                "organization": true,
+                "role": "party"
+              }
+            ],
+            "self_confidence": 4
+          },
+          "parsing_error": null,
+          "prompt": [
+            {
+              "content": "You extract structured entities from business documents.\nCopy spans verbatim from the document. If a fact is not present, omit it or use null. Never infer, complete, or invent a value that the document does not state.\nAmounts means sums of money only. Copy the currency symbol or code together with the digits. Never record a measurement, vital sign, lab value, percentage, count or duration as an amount - if a document contains no money, return no amounts. Do not convert, round, or total anything - another system does the arithmetic. For dates, only fill iso_date when day, month and year are all unambiguous.\nRate your own answer 1-5 in self_confidence and say in confidence_reason what most limits it. A low rating on a hard document is more useful than a confident wrong one.",
+              "role": "system"
+            },
+            {
+              "content": "Document (text/markdown, 1836 words), source 'contract_long_truncated.md':\n<document>\n@sha256:bf38fe308b04cec4fabdeef1132ddba1\n</document>\n\nExtract the entities.",
+              "role": "human"
+            }
+          ],
+          "raw_response": "{\"self_confidence\":4,\"confidence_reason\":\"3 of 5 entity families matched a rule.\",\"parties\":[{\"name\":\"Aurelian Components SA\",\"role\":\"party\",\"organization\":true},{\"name\":\"Pinnacle Motorworks Inc\",\"role\":\"party\",\"organization\":true}],\"dates\":[],\"amounts\":[],\"key_terms\":[\"warranty\",\"purchase order\"],\"identifiers\":[{\"kind\":\"po_number\",\"value\":\"nents\"}]}",
+          "schema_name": "ExtractionLLMOutput",
+          "self_confidence": 4,
+          "tokens": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "reasoning_tokens": null,
+            "total_tokens": null
+          }
+        }
+      ],
+      "name": "extraction",
+      "output": {
+        "confidence_reason": "3 of 5 entity families matched a rule.",
+        "doc_id": "contract_long_truncated",
+        "entities": {
+          "amounts": [],
+          "dates": [],
+          "identifiers": [
+            {
+              "kind": "po_number",
+              "value": "nents"
+            }
+          ],
+          "key_terms": [
+            "warranty",
+            "purchase order"
+          ],
+          "parties": [
+            {
+              "name": "Aurelian Components SA",
+              "organization": true,
+              "role": "party"
+            },
+            {
+              "name": "Pinnacle Motorworks Inc",
+              "organization": true,
+              "role": "party"
+            }
+          ]
+        },
+        "model_name": "fake-rules-v1",
+        "self_confidence": 4,
+        "warnings": [
+          {
+            "code": "no_dates_found",
+            "field_path": "entities.dates",
+            "message": "No dates were extracted.",
+            "severity": "warn"
+          },
+          {
+            "code": "extracted_from_truncated_text",
+            "field_path": null,
+            "message": "Extraction ran on truncated input; entities past the cut are missing by construction, not by model error.",
+            "severity": "info"
+          }
+        ]
+      },
+      "self_confidence": 4,
+      "status": "degraded",
+      "step": "extraction",
+      "suspicion": 0.265,
+      "warnings": [
+        {
+          "code": "no_dates_found",
+          "field_path": "entities.dates",
+          "message": "No dates were extracted.",
+          "severity": "warn"
+        },
+        {
+          "code": "extracted_from_truncated_text",
+          "field_path": null,
+          "message": "Extraction ran on truncated input; entities past the cut are missing by construction, not by model error.",
+          "severity": "info"
+        }
+      ],
+      "worst_severity": "warn"
+    },
+    {
+      "attributes": {
+        "margin": 0.775,
+        "runner_up": "report",
+        "top_score": 1.0
+      },
+      "computed_confidence": 0.775,
+      "confidence_reason": "Top keyword score 1.00.",
+      "error_message": null,
+      "error_type": null,
+      "inputs": {
+        "extraction": {
+          "confidence_reason": "3 of 5 entity families matched a rule.",
+          "doc_id": "contract_long_truncated",
+          "entities": {
+            "amounts": [],
+            "dates": [],
+            "identifiers": [
+              {
+                "kind": "po_number",
+                "value": "nents"
+              }
+            ],
+            "key_terms": [
+              "warranty",
+              "purchase order"
+            ],
+            "parties": [
+              {
+                "name": "Aurelian Components SA",
+                "organization": true,
+                "role": "party"
+              },
+              {
+                "name": "Pinnacle Motorworks Inc",
+                "organization": true,
+                "role": "party"
+              }
+            ]
+          },
+          "model_name": "fake-rules-v1",
+          "self_confidence": 4,
+          "warnings": [
+            {
+              "code": "no_dates_found",
+              "field_path": "entities.dates",
+              "message": "No dates were extracted.",
+              "severity": "warn"
+            },
+            {
+              "code": "extracted_from_truncated_text",
+              "field_path": null,
+              "message": "Extraction ran on truncated input; entities past the cut are missing by construction, not by model error.",
+              "severity": "info"
+            }
+          ]
+        },
+        "intake": "@sha256:<ref>"
+      },
+      "kind": "step",
+      "llm_calls": [
+        {
+          "backend": "fake",
+          "confidence_reason": "Top keyword score 1.00.",
+          "finish_reason": null,
+          "model": "fake-rules-v1",
+          "parsed": {
+            "confidence_reason": "Top keyword score 1.00.",
+            "contract": 1.0,
+            "correspondence": 0.0,
+            "invoice": 0.0,
+            "rationale": "Matched contract cues: agreement, shall, party, parties.",
+            "report": 0.225,
+            "self_confidence": 5
+          },
+          "parsing_error": null,
+          "prompt": [
+            {
+              "content": "You classify a business document into exactly these four types:\n- contract: creates mutual obligations between parties (agreement, MSA, NDA, lease)\n- invoice: demands payment for goods or services rendered\n- report: analyses a subject over a period, with findings\n- correspondence: a message from a sender to a recipient (letter, email, memo)\n\nScore each type independently from 0.0 to 1.0 for how well it fits. Scores need not sum to 1. If the document genuinely sits between two types, give both a high score - do not artificially separate them. A forced confident answer on an ambiguous document is worse than an honest tie.\nRate your own answer 1-5 in self_confidence and say in confidence_reason what most limits it. A low rating on a hard document is more useful than a confident wrong one.",
+              "role": "system"
+            },
+            {
+              "content": "Document (1836 words), source 'contract_long_truncated.md':\n<document>\n@sha256:bf38fe308b04cec4fabdeef1132ddba1\n</document>\n\nEntities already extracted:\nParties: Aurelian Components SA (party), Pinnacle Motorworks Inc (party)\nIdentifiers: po_number=nents\nKey terms: warranty, purchase order\n\nScore each candidate type and justify briefly.",
+              "role": "human"
+            }
+          ],
+          "raw_response": "{\"self_confidence\":5,\"confidence_reason\":\"Top keyword score 1.00.\",\"contract\":1.0,\"invoice\":0.0,\"report\":0.225,\"correspondence\":0.0,\"rationale\":\"Matched contract cues: agreement, shall, party, parties.\"}",
+          "schema_name": "ClassificationLLMOutput",
+          "self_confidence": 5,
+          "tokens": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "reasoning_tokens": null,
+            "total_tokens": null
+          }
+        }
+      ],
+      "name": "classification",
+      "output": {
+        "ambiguous": false,
+        "confidence": 1.0,
+        "confidence_reason": "Top keyword score 1.00.",
+        "doc_id": "contract_long_truncated",
+        "doc_type": "contract",
+        "margin": 0.775,
+        "model_name": "fake-rules-v1",
+        "rationale": "Matched contract cues: agreement, shall, party, parties.",
+        "runner_up": "report",
+        "scores": [
+          {
+            "doc_type": "contract",
+            "score": 1.0
+          },
+          {
+            "doc_type": "invoice",
+            "score": 0.0
+          },
+          {
+            "doc_type": "report",
+            "score": 0.225
+          },
+          {
+            "doc_type": "correspondence",
+            "score": 0.0
+          }
+        ],
+        "self_confidence": 5,
+        "warnings": [
+          {
+            "code": "classified_from_truncated_text",
+            "field_path": null,
+            "message": "Classification saw only the truncated head of the document.",
+            "severity": "info"
+          }
+        ]
+      },
+      "self_confidence": 5,
+      "status": "ok",
+      "step": "classification",
+      "suspicion": 0.0562,
+      "warnings": [
+        {
+          "code": "classified_from_truncated_text",
+          "field_path": null,
+          "message": "Classification saw only the truncated head of the document.",
+          "severity": "info"
+        }
+      ],
+      "worst_severity": "info"
+    },
+    {
+      "attributes": {
+        "figures_checked": 0,
+        "unsupported_figures": 0
+      },
+      "computed_confidence": 1.0,
+      "confidence_reason": "",
+      "error_message": null,
+      "error_type": null,
+      "inputs": {
+        "classification": {
+          "ambiguous": false,
+          "confidence": 1.0,
+          "confidence_reason": "Top keyword score 1.00.",
+          "doc_id": "contract_long_truncated",
+          "doc_type": "contract",
+          "margin": 0.775,
+          "model_name": "fake-rules-v1",
+          "rationale": "Matched contract cues: agreement, shall, party, parties.",
+          "runner_up": "report",
+          "scores": [
+            {
+              "doc_type": "contract",
+              "score": 1.0
+            },
+            {
+              "doc_type": "invoice",
+              "score": 0.0
+            },
+            {
+              "doc_type": "report",
+              "score": 0.225
+            },
+            {
+              "doc_type": "correspondence",
+              "score": 0.0
+            }
+          ],
+          "self_confidence": 5,
+          "warnings": [
+            {
+              "code": "classified_from_truncated_text",
+              "field_path": null,
+              "message": "Classification saw only the truncated head of the document.",
+              "severity": "info"
+            }
+          ]
+        },
+        "extraction": {
+          "confidence_reason": "3 of 5 entity families matched a rule.",
+          "doc_id": "contract_long_truncated",
+          "entities": {
+            "amounts": [],
+            "dates": [],
+            "identifiers": [
+              {
+                "kind": "po_number",
+                "value": "nents"
+              }
+            ],
+            "key_terms": [
+              "warranty",
+              "purchase order"
+            ],
+            "parties": [
+              {
+                "name": "Aurelian Components SA",
+                "organization": true,
+                "role": "party"
+              },
+              {
+                "name": "Pinnacle Motorworks Inc",
+                "organization": true,
+                "role": "party"
+              }
+            ]
+          },
+          "model_name": "fake-rules-v1",
+          "self_confidence": 4,
+          "warnings": [
+            {
+              "code": "no_dates_found",
+              "field_path": "entities.dates",
+              "message": "No dates were extracted.",
+              "severity": "warn"
+            },
+            {
+              "code": "extracted_from_truncated_text",
+              "field_path": null,
+              "message": "Extraction ran on truncated input; entities past the cut are missing by construction, not by model error.",
+              "severity": "info"
+            }
+          ]
+        },
+        "intake": "@sha256:<ref>"
+      },
+      "kind": "step",
+      "llm_calls": [
+        {
+          "backend": "fake",
+          "confidence_reason": "",
+          "finish_reason": null,
+          "model": "fake-rules-v1",
+          "parsed": {
+            "bullets": [
+              "This Master Supply and Distribution Agreement (the \"Agreement\") is made between",
+              "Aurelian Components SA (\"Supplier\") and Pinnacle Motorworks Inc (\"Distributor\").",
+              "1. DEFINITIONS",
+              "1.1 \"Products\" means the components listed in Schedule A, as amended from time",
+              "to time by written agreement of the parties."
+            ],
+            "confidence_reason": "",
+            "effective_date": null,
+            "governing_law": null,
+            "headline": "MASTER SUPPLY AND DISTRIBUTION AGREEMENT",
+            "key_obligations": [
+              "This Master Supply and Distribution Agreement (the \"Agreement\") is made between",
+              "Aurelian Components SA (\"Supplier\") and Pinnacle Motorworks Inc (\"Distributor\").",
+              "1. DEFINITIONS"
+            ],
+            "parties": [],
+            "self_confidence": 3,
+            "term": null,
+            "termination": null,
+            "unresolved_questions": [
+              "No effective date is stated anywhere in the agreement."
+            ]
+          },
+          "parsing_error": null,
+          "prompt": [
+            {
+              "content": "You write structured summaries of contract documents for a business reader.\nCopy spans verbatim from the document. If a fact is not present, omit it or use null. Never infer, complete, or invent a value that the document does not state.\nLead with who is bound to what. Cover parties, effective date, term, governing law, key obligations and termination. If no effective date is stated, say so explicitly - an unstated commencement date is a material gap, not a detail to smooth over.\nAlways fill bullets with 3-6 sentences summarising the document as a whole, even when the type-specific fields below repeat some of the same facts - bullets is the top-level read, the type-specific fields are the structured detail. Anything a reader would expect but the document omits goes in unresolved_questions. Leaving a field null and naming the gap is always correct; filling it by inference is not.\nRate your own answer 1-5 in self_confidence and say in confidence_reason what most limits it. A low rating on a hard document is more useful than a confident wrong one.",
+              "role": "system"
+            },
+            {
+              "content": "Document, source 'contract_long_truncated.md':\n<document>\n@sha256:bf38fe308b04cec4fabdeef1132ddba1\n</document>\n\nExtracted entities:\nParties: Aurelian Components SA (party), Pinnacle Motorworks Inc (party)\nIdentifiers: po_number=nents\nKey terms: warranty, purchase order\n\nClassification: contract (confidence 1.00, runner-up report, margin 0.78)\nThe classification is confident.\n\nWrite the summary.",
+              "role": "human"
+            }
+          ],
+          "raw_response": "{\"self_confidence\":3,\"confidence_reason\":\"\",\"headline\":\"MASTER SUPPLY AND DISTRIBUTION AGREEMENT\",\"bullets\":[\"This Master Supply and Distribution Agreement (the \\\"Agreement\\\") is made between\",\"Aurelian Components SA (\\\"Supplier\\\") and Pinnacle Motorworks Inc (\\\"Distributor\\\").\",\"1. DEFINITIONS\",\"1.1 \\\"Products\\\" means the components listed in Schedule A, as amended from time\",\"to time by written agreement of the parties.\"],\"unresolved_questions\":[\"No effective date is stated anywhere in the agreement.\"],\"parties\":[],\"effective_date\":null,\"term\":null,\"governing_law\":null,\"key_obligations\":[\"This Master Supply and Distribution Agreement (the \\\"Agreement\\\") is made between\",\"Aurelian Components SA (\\\"Supplier\\\") and Pinnacle Motorworks Inc (\\\"Distributor\\\").\",\"1. DEFINITIONS\"],\"termination\":null}",
+          "schema_name": "ContractSummaryLLMOutput",
+          "self_confidence": 3,
+          "tokens": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "reasoning_tokens": null,
+            "total_tokens": null
+          }
+        }
+      ],
+      "name": "summarization",
+      "output": {
+        "bullets": [
+          "This Master Supply and Distribution Agreement (the \"Agreement\") is made between",
+          "Aurelian Components SA (\"Supplier\") and Pinnacle Motorworks Inc (\"Distributor\").",
+          "1. DEFINITIONS",
+          "1.1 \"Products\" means the components listed in Schedule A, as amended from time",
+          "to time by written agreement of the parties."
+        ],
+        "confidence_reason": "",
+        "doc_id": "contract_long_truncated",
+        "doc_type": "contract",
+        "headline": "MASTER SUPPLY AND DISTRIBUTION AGREEMENT",
+        "model_name": "fake-rules-v1",
+        "self_confidence": 3,
+        "type_specific": {
+          "confidence_reason": "",
+          "effective_date": null,
+          "governing_law": null,
+          "key_obligations": [
+            "This Master Supply and Distribution Agreement (the \"Agreement\") is made between",
+            "Aurelian Components SA (\"Supplier\") and Pinnacle Motorworks Inc (\"Distributor\").",
+            "1. DEFINITIONS"
+          ],
+          "parties": [],
+          "self_confidence": 3,
+          "term": null,
+          "termination": null
+        },
+        "unresolved_questions": [
+          "No effective date is stated anywhere in the agreement."
+        ],
+        "warnings": []
+      },
+      "self_confidence": 3,
+      "status": "ok",
+      "step": "summarization",
+      "suspicion": 0.09,
+      "warnings": [],
+      "worst_severity": null
+    }
+  ],
+  "status": "degraded",
+  "tags": {},
+  "total_tokens": null
+}

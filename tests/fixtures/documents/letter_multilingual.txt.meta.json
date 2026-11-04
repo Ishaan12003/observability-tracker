@@ -1,0 +1,7 @@
+{
+  "doc_id": "letter_multilingual",
+  "expected_type": "correspondence",
+  "expected_failure": "non_english_clause",
+  "expected_warning_codes": [],
+  "notes": "An English letter carrying a controlling German clause with the operative figure (EUR 96.000,00) and the notice period. Extraction that only reads English silently loses the binding term; the European decimal format also breaks naive amount parsing. The letter is about a contract, so classification must not be dragged to 'contract' by the quoted clause."
+}

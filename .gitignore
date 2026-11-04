@@ -1,0 +1,37 @@
+# --- secrets ---------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --- your documents --------------------------------------------------------
+# data/ is a drop zone for whatever you want to run through the pipeline, plus
+# the generated demo corpus. None of it is tracked. The committed failure-mode
+# fixtures live in tests/fixtures/documents/ instead.
+/data/**
+!/data/
+!/data/README.md
+
+# --- run output ------------------------------------------------------------
+/traces/
+/runs/
+/feedback/
+*.jsonl
+
+# --- python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- editors / os ----------------------------------------------------------
+.DS_Store
+.idea/
+*.swp

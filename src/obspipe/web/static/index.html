@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>obspipe · trace explorer</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true">◆</span> obspipe <span class="muted">trace explorer</span></div>
+    <nav class="tabs" role="tablist">
+      <a href="#/traces" data-tab="traces" role="tab">Traces</a>
+      <a href="#/evals" data-tab="evals" role="tab">Eval dataset</a>
+      <a href="#/analytics" data-tab="analytics" role="tab">Analytics</a>
+    </nav>
+  </header>
+
+  <main id="view-traces" class="view traces-view" hidden>
+    <aside class="sidebar">
+      <div class="filters">
+        <input id="filter-q" type="search" placeholder="Search document or trace id" aria-label="Search">
+        <div class="filter-row">
+          <select id="filter-batch" aria-label="Batch"><option value="">All batches</option></select>
+          <select id="filter-verdict" aria-label="Verdict">
+            <option value="">All verdicts</option>
+            <option value="failure">Failures</option>
+            <option value="healthy">Healthy</option>
+          </select>
+        </div>
+        <label class="check"><input id="filter-evals" type="checkbox"> include eval replays</label>
+      </div>
+      <div id="trace-count" class="muted small"></div>
+      <ul id="trace-list" class="trace-list"></ul>
+    </aside>
+    <section id="trace-detail" class="detail">
+      <div class="empty-state">
+        <h2>Pick a trace</h2>
+        <p>Every pipeline run is listed on the left. Red rows are diagnosed failures.</p>
+      </div>
+    </section>
+  </main>
+
+  <main id="view-evals" class="view page" hidden></main>
+  <main id="view-analytics" class="view page" hidden></main>
+
+  <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card" id="modal-card"></div>
+  </div>
+  <div id="tooltip" class="tooltip" hidden></div>
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

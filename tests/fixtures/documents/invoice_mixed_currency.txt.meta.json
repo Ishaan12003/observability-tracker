@@ -1,0 +1,7 @@
+{
+  "doc_id": "invoice_mixed_currency",
+  "expected_type": "invoice",
+  "expected_failure": "mixed_currency_total",
+  "expected_warning_codes": ["mixed_currencies", "single_total_over_mixed_currencies"],
+  "notes": "Line items in USD, EUR (European decimal format) and INR (lakh grouping), but the stated Total Due covers only the USD items. Any pipeline that sums naively produces a wrong number; the correct behaviour is to flag the currency mix and refuse to present one combined figure."
+}

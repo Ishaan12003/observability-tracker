@@ -1,0 +1,7 @@
+{
+  "doc_id": "contract_long_truncated",
+  "expected_type": "contract",
+  "expected_failure": "truncation_entity_loss",
+  "expected_warning_codes": ["document_truncated", "no_dates_found"],
+  "notes": "Every date and the only monetary commitment live in the final clauses, past the 12,000-character intake budget. The pipeline will therefore report a contract with no effective date and no value. That failure originates in step 1, not step 2 - and proving that distinction is the whole point of the tracer."
+}

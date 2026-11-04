@@ -1,0 +1,9 @@
+{
+  "doc_id": "invoice_no_total",
+  "expected_type": "invoice",
+  "expected_failure": "no_total",
+  "expected_warning_codes": [
+    "no_total_found"
+  ],
+  "notes": "Line items are present and internally consistent but the document never states a total. The tempting failure is for step 4 to present a computed $7,420.00 as though the document said it; the span-grounding check in step 4 catches exactly that. Correct behaviour is a null total plus an unresolved question."
+}

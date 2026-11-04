@@ -1,0 +1,14 @@
+BRIGHTPATH CONSULTING
+INVOICE
+
+Invoice No: BP-0931
+Invoice date: 2024-05-02
+Bill To: Meridian Analytics Inc
+
+Qty  Description                        Unit Price     Amount
+  8  Discovery workshop hours             $225.00     $1,800.00
+ 24  Implementation hours                 $195.00     $4,680.00
+  1  Licence pass-through                 $940.00       $940.00
+
+Payment terms: Net 45. Remit by wire to account ending 0931.
+Questions regarding this invoice may be directed to billing@brightpath.example.

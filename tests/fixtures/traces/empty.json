@@ -1,0 +1,122 @@
+{
+  "backend": "fake",
+  "doc_id": "empty",
+  "failed_step": "intake",
+  "feedback_notes": null,
+  "final_score": null,
+  "first_degraded_step": "intake",
+  "model": "fake-rules-v1",
+  "source_name": "empty.txt",
+  "spans": [
+    {
+      "attributes": {},
+      "computed_confidence": null,
+      "confidence_reason": null,
+      "error_message": null,
+      "error_type": null,
+      "inputs": {
+        "doc_id": "empty"
+      },
+      "kind": "pipeline",
+      "llm_calls": [],
+      "name": "pipeline",
+      "output": null,
+      "self_confidence": null,
+      "status": "failed",
+      "step": null,
+      "suspicion": 0.0,
+      "warnings": [],
+      "worst_severity": "error"
+    },
+    {
+      "attributes": {},
+      "computed_confidence": null,
+      "confidence_reason": null,
+      "error_message": "Document contains only whitespace (9 chars).",
+      "error_type": "whitespace_only_document",
+      "inputs": {
+        "document": {
+          "content": "   \n\t\n  \n",
+          "content_type": "text/plain",
+          "doc_id": "empty",
+          "source_name": "empty.txt"
+        },
+        "max_chars": 12000
+      },
+      "kind": "step",
+      "llm_calls": [],
+      "name": "intake",
+      "output": null,
+      "self_confidence": null,
+      "status": "failed",
+      "step": "intake",
+      "suspicion": 1.0,
+      "warnings": [
+        {
+          "code": "whitespace_only_document",
+          "field_path": null,
+          "message": "Document contains only whitespace (9 chars).",
+          "severity": "error"
+        }
+      ],
+      "worst_severity": "error"
+    },
+    {
+      "attributes": {},
+      "computed_confidence": null,
+      "confidence_reason": null,
+      "error_message": null,
+      "error_type": null,
+      "inputs": {},
+      "kind": "step",
+      "llm_calls": [],
+      "name": "extraction",
+      "output": null,
+      "self_confidence": null,
+      "status": "skipped",
+      "step": "extraction",
+      "suspicion": 0.0,
+      "warnings": [],
+      "worst_severity": null
+    },
+    {
+      "attributes": {},
+      "computed_confidence": null,
+      "confidence_reason": null,
+      "error_message": null,
+      "error_type": null,
+      "inputs": {},
+      "kind": "step",
+      "llm_calls": [],
+      "name": "classification",
+      "output": null,
+      "self_confidence": null,
+      "status": "skipped",
+      "step": "classification",
+      "suspicion": 0.0,
+      "warnings": [],
+      "worst_severity": null
+    },
+    {
+      "attributes": {},
+      "computed_confidence": null,
+      "confidence_reason": null,
+      "error_message": null,
+      "error_type": null,
+      "inputs": {},
+      "kind": "step",
+      "llm_calls": [],
+      "name": "summarization",
+      "output": null,
+      "self_confidence": null,
+      "status": "skipped",
+      "step": "summarization",
+      "suspicion": 0.0,
+      "warnings": [],
+      "worst_severity": null
+    }
+  ],
+  "status": "failed",
+  "tags": {},
+  "total_tokens": null
+}

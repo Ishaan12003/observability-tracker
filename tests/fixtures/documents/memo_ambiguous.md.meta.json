@@ -1,0 +1,7 @@
+{
+  "doc_id": "memo_ambiguous",
+  "expected_type": "report",
+  "expected_failure": "ambiguous_type",
+  "expected_warning_codes": ["ambiguous_classification"],
+  "notes": "Genuinely between report and correspondence: it has a memo header, salutation and sign-off (correspondence cues) wrapped around an executive summary, methodology, findings and recommendations (report cues). Either label is defensible, so the correct behaviour is a small margin plus disclosure - not a confident single label. expected_type records the marginally better answer, and the eval dataset in Phase 4 should treat correspondence as an acceptable alternative."
+}

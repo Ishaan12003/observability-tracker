@@ -1,0 +1,865 @@
+{
+  "backend": "fake",
+  "doc_id": "invoice_mixed_currency",
+  "failed_step": null,
+  "feedback_notes": null,
+  "final_score": null,
+  "first_degraded_step": "extraction",
+  "model": "fake-rules-v1",
+  "source_name": "invoice_mixed_currency.txt",
+  "spans": [
+    {
+      "attributes": {},
+      "computed_confidence": null,
+      "confidence_reason": null,
+      "error_message": null,
+      "error_type": null,
+      "inputs": {
+        "doc_id": "invoice_mixed_currency"
+      },
+      "kind": "pipeline",
+      "llm_calls": [],
+      "name": "pipeline",
+      "output": null,
+      "self_confidence": null,
+      "status": "ok",
+      "step": null,
+      "suspicion": 0.0,
+      "warnings": [],
+      "worst_severity": null
+    },
+    {
+      "attributes": {
+        "char_count": 756,
+        "sections": 3,
+        "truncated": false
+      },
+      "computed_confidence": 1.0,
+      "confidence_reason": null,
+      "error_message": null,
+      "error_type": null,
+      "inputs": {
+        "document": {
+          "content": "HALCYON DATA SYSTEMS LLC\n1400 Market Street, Wilmington, DE 19801\n\nINVOICE\n\nInvoice No: HDS-2024-0417\nPO Number: NW-PO-88213\nInvoice date: 12/03/2024\nDue date: 11/04/2024\nPayment terms: Net 30\n\nBill To: Northwind Logistics Pvt Ltd, Bengaluru, India\n\nLINE ITEMS\n\nData pipeline engineering, 120 hours       $18,000.00\nEU data residency hosting, Q1              EUR 4.250,00\nOn-site workshop, Bengaluru, 3 days        Rs. 1,80,000\nSupport retainer, March                    $2,500.00\n\nSubtotal                                   $20,500.00\nGST 18% on India services                  Rs. 32,400\nTotal Due                                  $20,500.00\n\nRemit to: Halcyon Data Systems LLC, account ending 4417.\nLate fee of 1.5% per month applies after the due date.\n",
+          "content_type": "text/plain",
+          "doc_id": "invoice_mixed_currency",
+          "source_name": "invoice_mixed_currency.txt"
+        },
+        "max_chars": 12000
+      },
+      "kind": "step",
+      "llm_calls": [],
+      "name": "intake",
+      "output": {
+        "char_count": 756,
+        "content_type": "text/plain",
+        "doc_id": "invoice_mixed_currency",
+        "line_count": 26,
+        "normalized_text": "HALCYON DATA SYSTEMS LLC\n1400 Market Street, Wilmington, DE 19801\n\nINVOICE\n\nInvoice No: HDS-2024-0417\nPO Number: NW-PO-88213\nInvoice date: 12/03/2024\nDue date: 11/04/2024\nPayment terms: Net 30\n\nBill To: Northwind Logistics Pvt Ltd, Bengaluru, India\n\nLINE ITEMS\n\nData pipeline engineering, 120 hours       $18,000.00\nEU data residency hosting, Q1              EUR 4.250,00\nOn-site workshop, Bengaluru, 3 days        Rs. 1,80,000\nSupport retainer, March                    $2,500.00\n\nSubtotal                                   $20,500.00\nGST 18% on India services                  Rs. 32,400\nTotal Due                                  $20,500.00\n\nRemit to: Halcyon Data Systems LLC, account ending 4417.\nLate fee of 1.5% per month applies after the due date.",
+        "ocr_artifacts_repaired": 0,
+        "original_char_count": 757,
+        "sections": [
+          {
+            "end_line": 3,
+            "heading": "HALCYON DATA SYSTEMS LLC",
+            "start_line": 1
+          },
+          {
+            "end_line": 13,
+            "heading": "INVOICE",
+            "start_line": 4
+          },
+          {
+            "end_line": 26,
+            "heading": "LINE ITEMS",
+            "start_line": 14
+          }
+        ],
+        "source_name": "invoice_mixed_currency.txt",
+        "truncated": false,
+        "warnings": [],
+        "word_count": 93
+      },
+      "self_confidence": null,
+      "status": "ok",
+      "step": "intake",
+      "suspicion": 0.0,
+      "warnings": [],
+      "worst_severity": null
+    },
+    {
+      "attributes": {
+        "entities": 10,
+        "hallucinated_spans": 0
+      },
+      "computed_confidence": 1.0,
+      "confidence_reason": "5 of 5 entity families matched a rule.",
+      "error_message": null,
+      "error_type": null,
+      "inputs": {
+        "intake": {
+          "char_count": 756,
+          "content_type": "text/plain",
+          "doc_id": "invoice_mixed_currency",
+          "line_count": 26,
+          "normalized_text": "HALCYON DATA SYSTEMS LLC\n1400 Market Street, Wilmington, DE 19801\n\nINVOICE\n\nInvoice No: HDS-2024-0417\nPO Number: NW-PO-88213\nInvoice date: 12/03/2024\nDue date: 11/04/2024\nPayment terms: Net 30\n\nBill To: Northwind Logistics Pvt Ltd, Bengaluru, India\n\nLINE ITEMS\n\nData pipeline engineering, 120 hours       $18,000.00\nEU data residency hosting, Q1              EUR 4.250,00\nOn-site workshop, Bengaluru, 3 days        Rs. 1,80,000\nSupport retainer, March                    $2,500.00\n\nSubtotal                                   $20,500.00\nGST 18% on India services                  Rs. 32,400\nTotal Due                                  $20,500.00\n\nRemit to: Halcyon Data Systems LLC, account ending 4417.\nLate fee of 1.5% per month applies after the due date.",
+          "ocr_artifacts_repaired": 0,
+          "original_char_count": 757,
+          "sections": [
+            {
+              "end_line": 3,
+              "heading": "HALCYON DATA SYSTEMS LLC",
+              "start_line": 1
+            },
+            {
+              "end_line": 13,
+              "heading": "INVOICE",
+              "start_line": 4
+            },
+            {
+              "end_line": 26,
+              "heading": "LINE ITEMS",
+              "start_line": 14
+            }
+          ],
+          "source_name": "invoice_mixed_currency.txt",
+          "truncated": false,
+          "warnings": [],
+          "word_count": 93
+        }
+      },
+      "kind": "step",
+      "llm_calls": [
+        {
+          "backend": "fake",
+          "confidence_reason": "5 of 5 entity families matched a rule.",
+          "finish_reason": null,
+          "model": "fake-rules-v1",
+          "parsed": {
+            "amounts": [
+              {
+                "kind": "line_item",
+                "label": "Data pipeline engineering, 120 hours",
+                "raw_text": "$18,000.00"
+              },
+              {
+                "kind": "unknown",
+                "label": "EU data residency hosting, Q1",
+                "raw_text": "EUR 4.250,00"
+              },
+              {
+                "kind": "unknown",
+                "label": "On-site workshop, Bengaluru, 3 days",
+                "raw_text": "Rs. 1,80,000"
+              },
+              {
+                "kind": "unknown",
+                "label": "Support retainer, March",
+                "raw_text": "$2,500.00"
+              },
+              {
+                "kind": "subtotal",
+                "label": "Subtotal",
+                "raw_text": "$20,500.00"
+              },
+              {
+                "kind": "tax",
+                "label": "GST 18% on India services",
+                "raw_text": "Rs. 32,400"
+              },
+              {
+                "kind": "total",
+                "label": "Total Due",
+                "raw_text": "$20,500.00"
+              }
+            ],
+            "confidence_reason": "5 of 5 entity families matched a rule.",
+            "dates": [
+              {
+                "iso_date": "2024-03-12",
+                "raw_text": "12/03/2024",
+                "role": "issued"
+              },
+              {
+                "iso_date": "2024-04-11",
+                "raw_text": "11/04/2024",
+                "role": "due"
+              }
+            ],
+            "identifiers": [
+              {
+                "kind": "invoice_number",
+                "value": "HDS-2024-0417"
+              },
+              {
+                "kind": "po_number",
+                "value": "Number"
+              }
+            ],
+            "key_terms": [
+              "payment terms",
+              "late fee",
+              "net 30",
+              "gst"
+            ],
+            "parties": [
+              {
+                "name": "Northwind Logistics Pvt Ltd, Bengaluru, India",
+                "organization": true,
+                "role": "bill_to"
+              }
+            ],
+            "self_confidence": 5
+          },
+          "parsing_error": null,
+          "prompt": [
+            {
+              "content": "You extract structured entities from business documents.\nCopy spans verbatim from the document. If a fact is not present, omit it or use null. Never infer, complete, or invent a value that the document does not state.\nAmounts means sums of money only. Copy the currency symbol or code together with the digits. Never record a measurement, vital sign, lab value, percentage, count or duration as an amount - if a document contains no money, return no amounts. Do not convert, round, or total anything - another system does the arithmetic. For dates, only fill iso_date when day, month and year are all unambiguous.\nRate your own answer 1-5 in self_confidence and say in confidence_reason what most limits it. A low rating on a hard document is more useful than a confident wrong one.",
+              "role": "system"
+            },
+            {
+              "content": "Document (text/plain, 93 words), source 'invoice_mixed_currency.txt':\n<document>\nHALCYON DATA SYSTEMS LLC\n1400 Market Street, Wilmington, DE 19801\n\nINVOICE\n\nInvoice No: HDS-2024-0417\nPO Number: NW-PO-88213\nInvoice date: 12/03/2024\nDue date: 11/04/2024\nPayment terms: Net 30\n\nBill To: Northwind Logistics Pvt Ltd, Bengaluru, India\n\nLINE ITEMS\n\nData pipeline engineering, 120 hours       $18,000.00\nEU data residency hosting, Q1              EUR 4.250,00\nOn-site workshop, Bengaluru, 3 days        Rs. 1,80,000\nSupport retainer, March                    $2,500.00\n\nSubtotal                                   $20,500.00\nGST 18% on India services                  Rs. 32,400\nTotal Due                                  $20,500.00\n\nRemit to: Halcyon Data Systems LLC, account ending 4417.\nLate fee of 1.5% per month applies after the due date.\n</document>\n\nExtract the entities.",
+              "role": "human"
+            }
+          ],
+          "raw_response": "{\"self_confidence\":5,\"confidence_reason\":\"5 of 5 entity families matched a rule.\",\"parties\":[{\"name\":\"Northwind Logistics Pvt Ltd, Bengaluru, India\",\"role\":\"bill_to\",\"organization\":true}],\"dates\":[{\"raw_text\":\"12/03/2024\",\"iso_date\":\"2024-03-12\",\"role\":\"issued\"},{\"raw_text\":\"11/04/2024\",\"iso_date\":\"2024-04-11\",\"role\":\"due\"}],\"amounts\":[{\"raw_text\":\"$18,000.00\",\"label\":\"Data pipeline engineering, 120 hours\",\"kind\":\"line_item\"},{\"raw_text\":\"EUR 4.250,00\",\"label\":\"EU data residency hosting, Q1\",\"kind\":\"unknown\"},{\"raw_text\":\"Rs. 1,80,000\",\"label\":\"On-site workshop, Bengaluru, 3 days\",\"kind\":\"unknown\"},{\"raw_text\":\"$2,500.00\",\"label\":\"Support retainer, March\",\"kind\":\"unknown\"},{\"raw_text\":\"$20,500.00\",\"label\":\"Subtotal\",\"kind\":\"subtotal\"},{\"raw_text\":\"Rs. 32,400\",\"label\":\"GST 18% on India services\",\"kind\":\"tax\"},{\"raw_text\":\"$20,500.00\",\"label\":\"Total Due\",\"kind\":\"total\"}],\"key_terms\":[\"payment terms\",\"late fee\",\"net 30\",\"gst\"],\"identifiers\":[{\"kind\":\"invoice_number\",\"value\":\"HDS-2024-0417\"},{\"kind\":\"po_number\",\"value\":\"Number\"}]}",
+          "schema_name": "ExtractionLLMOutput",
+          "self_confidence": 5,
+          "tokens": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "reasoning_tokens": null,
+            "total_tokens": null
+          }
+        }
+      ],
+      "name": "extraction",
+      "output": {
+        "confidence_reason": "5 of 5 entity families matched a rule.",
+        "doc_id": "invoice_mixed_currency",
+        "entities": {
+          "amounts": [
+            {
+              "currency": "USD",
+              "kind": "line_item",
+              "label": "Data pipeline engineering, 120 hours",
+              "raw_text": "$18,000.00",
+              "value": "18000.00"
+            },
+            {
+              "currency": "EUR",
+              "kind": "unknown",
+              "label": "EU data residency hosting, Q1",
+              "raw_text": "EUR 4.250,00",
+              "value": "4250.00"
+            },
+            {
+              "currency": "INR",
+              "kind": "unknown",
+              "label": "On-site workshop, Bengaluru, 3 days",
+              "raw_text": "Rs. 1,80,000",
+              "value": "180000"
+            },
+            {
+              "currency": "USD",
+              "kind": "unknown",
+              "label": "Support retainer, March",
+              "raw_text": "$2,500.00",
+              "value": "2500.00"
+            },
+            {
+              "currency": "USD",
+              "kind": "subtotal",
+              "label": "Subtotal",
+              "raw_text": "$20,500.00",
+              "value": "20500.00"
+            },
+            {
+              "currency": "INR",
+              "kind": "tax",
+              "label": "GST 18% on India services",
+              "raw_text": "Rs. 32,400",
+              "value": "32400"
+            },
+            {
+              "currency": "USD",
+              "kind": "total",
+              "label": "Total Due",
+              "raw_text": "$20,500.00",
+              "value": "20500.00"
+            }
+          ],
+          "dates": [
+            {
+              "iso_date": "2024-03-12",
+              "raw_text": "12/03/2024",
+              "role": "issued"
+            },
+            {
+              "iso_date": "2024-04-11",
+              "raw_text": "11/04/2024",
+              "role": "due"
+            }
+          ],
+          "identifiers": [
+            {
+              "kind": "invoice_number",
+              "value": "HDS-2024-0417"
+            },
+            {
+              "kind": "po_number",
+              "value": "Number"
+            }
+          ],
+          "key_terms": [
+            "payment terms",
+            "late fee",
+            "net 30",
+            "gst"
+          ],
+          "parties": [
+            {
+              "name": "Northwind Logistics Pvt Ltd, Bengaluru, India",
+              "organization": true,
+              "role": "bill_to"
+            }
+          ]
+        },
+        "model_name": "fake-rules-v1",
+        "self_confidence": 5,
+        "warnings": [
+          {
+            "code": "mixed_currencies",
+            "field_path": "entities.amounts",
+            "message": "Amounts span 3 currencies (EUR, INR, USD); they must not be combined into one figure.",
+            "severity": "warn"
+          },
+          {
+            "code": "total_reconciliation_skipped",
+            "field_path": "entities.amounts",
+            "message": "1 USD amount(s) have no identified role, so the stated total could not be checked.",
+            "severity": "info"
+          }
+        ]
+      },
+      "self_confidence": 5,
+      "status": "degraded",
+      "step": "extraction",
+      "suspicion": 0.37,
+      "warnings": [
+        {
+          "code": "mixed_currencies",
+          "field_path": "entities.amounts",
+          "message": "Amounts span 3 currencies (EUR, INR, USD); they must not be combined into one figure.",
+          "severity": "warn"
+        },
+        {
+          "code": "total_reconciliation_skipped",
+          "field_path": "entities.amounts",
+          "message": "1 USD amount(s) have no identified role, so the stated total could not be checked.",
+          "severity": "info"
+        }
+      ],
+      "worst_severity": "warn"
+    },
+    {
+      "attributes": {
+        "margin": 1.0,
+        "runner_up": "contract",
+        "top_score": 1.0
+      },
+      "computed_confidence": 1.0,
+      "confidence_reason": "Top keyword score 1.00.",
+      "error_message": null,
+      "error_type": null,
+      "inputs": {
+        "extraction": {
+          "confidence_reason": "5 of 5 entity families matched a rule.",
+          "doc_id": "invoice_mixed_currency",
+          "entities": {
+            "amounts": [
+              {
+                "currency": "USD",
+                "kind": "line_item",
+                "label": "Data pipeline engineering, 120 hours",
+                "raw_text": "$18,000.00",
+                "value": "18000.00"
+              },
+              {
+                "currency": "EUR",
+                "kind": "unknown",
+                "label": "EU data residency hosting, Q1",
+                "raw_text": "EUR 4.250,00",
+                "value": "4250.00"
+              },
+              {
+                "currency": "INR",
+                "kind": "unknown",
+                "label": "On-site workshop, Bengaluru, 3 days",
+                "raw_text": "Rs. 1,80,000",
+                "value": "180000"
+              },
+              {
+                "currency": "USD",
+                "kind": "unknown",
+                "label": "Support retainer, March",
+                "raw_text": "$2,500.00",
+                "value": "2500.00"
+              },
+              {
+                "currency": "USD",
+                "kind": "subtotal",
+                "label": "Subtotal",
+                "raw_text": "$20,500.00",
+                "value": "20500.00"
+              },
+              {
+                "currency": "INR",
+                "kind": "tax",
+                "label": "GST 18% on India services",
+                "raw_text": "Rs. 32,400",
+                "value": "32400"
+              },
+              {
+                "currency": "USD",
+                "kind": "total",
+                "label": "Total Due",
+                "raw_text": "$20,500.00",
+                "value": "20500.00"
+              }
+            ],
+            "dates": [
+              {
+                "iso_date": "2024-03-12",
+                "raw_text": "12/03/2024",
+                "role": "issued"
+              },
+              {
+                "iso_date": "2024-04-11",
+                "raw_text": "11/04/2024",
+                "role": "due"
+              }
+            ],
+            "identifiers": [
+              {
+                "kind": "invoice_number",
+                "value": "HDS-2024-0417"
+              },
+              {
+                "kind": "po_number",
+                "value": "Number"
+              }
+            ],
+            "key_terms": [
+              "payment terms",
+              "late fee",
+              "net 30",
+              "gst"
+            ],
+            "parties": [
+              {
+                "name": "Northwind Logistics Pvt Ltd, Bengaluru, India",
+                "organization": true,
+                "role": "bill_to"
+              }
+            ]
+          },
+          "model_name": "fake-rules-v1",
+          "self_confidence": 5,
+          "warnings": [
+            {
+              "code": "mixed_currencies",
+              "field_path": "entities.amounts",
+              "message": "Amounts span 3 currencies (EUR, INR, USD); they must not be combined into one figure.",
+              "severity": "warn"
+            },
+            {
+              "code": "total_reconciliation_skipped",
+              "field_path": "entities.amounts",
+              "message": "1 USD amount(s) have no identified role, so the stated total could not be checked.",
+              "severity": "info"
+            }
+          ]
+        },
+        "intake": {
+          "char_count": 756,
+          "content_type": "text/plain",
+          "doc_id": "invoice_mixed_currency",
+          "line_count": 26,
+          "normalized_text": "HALCYON DATA SYSTEMS LLC\n1400 Market Street, Wilmington, DE 19801\n\nINVOICE\n\nInvoice No: HDS-2024-0417\nPO Number: NW-PO-88213\nInvoice date: 12/03/2024\nDue date: 11/04/2024\nPayment terms: Net 30\n\nBill To: Northwind Logistics Pvt Ltd, Bengaluru, India\n\nLINE ITEMS\n\nData pipeline engineering, 120 hours       $18,000.00\nEU data residency hosting, Q1              EUR 4.250,00\nOn-site workshop, Bengaluru, 3 days        Rs. 1,80,000\nSupport retainer, March                    $2,500.00\n\nSubtotal                                   $20,500.00\nGST 18% on India services                  Rs. 32,400\nTotal Due                                  $20,500.00\n\nRemit to: Halcyon Data Systems LLC, account ending 4417.\nLate fee of 1.5% per month applies after the due date.",
+          "ocr_artifacts_repaired": 0,
+          "original_char_count": 757,
+          "sections": [
+            {
+              "end_line": 3,
+              "heading": "HALCYON DATA SYSTEMS LLC",
+              "start_line": 1
+            },
+            {
+              "end_line": 13,
+              "heading": "INVOICE",
+              "start_line": 4
+            },
+            {
+              "end_line": 26,
+              "heading": "LINE ITEMS",
+              "start_line": 14
+            }
+          ],
+          "source_name": "invoice_mixed_currency.txt",
+          "truncated": false,
+          "warnings": [],
+          "word_count": 93
+        }
+      },
+      "kind": "step",
+      "llm_calls": [
+        {
+          "backend": "fake",
+          "confidence_reason": "Top keyword score 1.00.",
+          "finish_reason": null,
+          "model": "fake-rules-v1",
+          "parsed": {
+            "confidence_reason": "Top keyword score 1.00.",
+            "contract": 0.0,
+            "correspondence": 0.0,
+            "invoice": 1.0,
+            "rationale": "Matched invoice cues: invoice, bill to, payment terms, subtotal.",
+            "report": 0.0,
+            "self_confidence": 5
+          },
+          "parsing_error": null,
+          "prompt": "@sha256:<ref>",
+          "raw_response": "{\"self_confidence\":5,\"confidence_reason\":\"Top keyword score 1.00.\",\"contract\":0.0,\"invoice\":1.0,\"report\":0.0,\"correspondence\":0.0,\"rationale\":\"Matched invoice cues: invoice, bill to, payment terms, subtotal.\"}",
+          "schema_name": "ClassificationLLMOutput",
+          "self_confidence": 5,
+          "tokens": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "reasoning_tokens": null,
+            "total_tokens": null
+          }
+        }
+      ],
+      "name": "classification",
+      "output": {
+        "ambiguous": false,
+        "confidence": 1.0,
+        "confidence_reason": "Top keyword score 1.00.",
+        "doc_id": "invoice_mixed_currency",
+        "doc_type": "invoice",
+        "margin": 1.0,
+        "model_name": "fake-rules-v1",
+        "rationale": "Matched invoice cues: invoice, bill to, payment terms, subtotal.",
+        "runner_up": "contract",
+        "scores": [
+          {
+            "doc_type": "contract",
+            "score": 0.0
+          },
+          {
+            "doc_type": "invoice",
+            "score": 1.0
+          },
+          {
+            "doc_type": "report",
+            "score": 0.0
+          },
+          {
+            "doc_type": "correspondence",
+            "score": 0.0
+          }
+        ],
+        "self_confidence": 5,
+        "warnings": []
+      },
+      "self_confidence": 5,
+      "status": "ok",
+      "step": "classification",
+      "suspicion": 0.0,
+      "warnings": [],
+      "worst_severity": null
+    },
+    {
+      "attributes": {
+        "figures_checked": 1,
+        "unsupported_figures": 0
+      },
+      "computed_confidence": 1.0,
+      "confidence_reason": "",
+      "error_message": null,
+      "error_type": null,
+      "inputs": {
+        "classification": {
+          "ambiguous": false,
+          "confidence": 1.0,
+          "confidence_reason": "Top keyword score 1.00.",
+          "doc_id": "invoice_mixed_currency",
+          "doc_type": "invoice",
+          "margin": 1.0,
+          "model_name": "fake-rules-v1",
+          "rationale": "Matched invoice cues: invoice, bill to, payment terms, subtotal.",
+          "runner_up": "contract",
+          "scores": [
+            {
+              "doc_type": "contract",
+              "score": 0.0
+            },
+            {
+              "doc_type": "invoice",
+              "score": 1.0
+            },
+            {
+              "doc_type": "report",
+              "score": 0.0
+            },
+            {
+              "doc_type": "correspondence",
+              "score": 0.0
+            }
+          ],
+          "self_confidence": 5,
+          "warnings": []
+        },
+        "extraction": {
+          "confidence_reason": "5 of 5 entity families matched a rule.",
+          "doc_id": "invoice_mixed_currency",
+          "entities": {
+            "amounts": [
+              {
+                "currency": "USD",
+                "kind": "line_item",
+                "label": "Data pipeline engineering, 120 hours",
+                "raw_text": "$18,000.00",
+                "value": "18000.00"
+              },
+              {
+                "currency": "EUR",
+                "kind": "unknown",
+                "label": "EU data residency hosting, Q1",
+                "raw_text": "EUR 4.250,00",
+                "value": "4250.00"
+              },
+              {
+                "currency": "INR",
+                "kind": "unknown",
+                "label": "On-site workshop, Bengaluru, 3 days",
+                "raw_text": "Rs. 1,80,000",
+                "value": "180000"
+              },
+              {
+                "currency": "USD",
+                "kind": "unknown",
+                "label": "Support retainer, March",
+                "raw_text": "$2,500.00",
+                "value": "2500.00"
+              },
+              {
+                "currency": "USD",
+                "kind": "subtotal",
+                "label": "Subtotal",
+                "raw_text": "$20,500.00",
+                "value": "20500.00"
+              },
+              {
+                "currency": "INR",
+                "kind": "tax",
+                "label": "GST 18% on India services",
+                "raw_text": "Rs. 32,400",
+                "value": "32400"
+              },
+              {
+                "currency": "USD",
+                "kind": "total",
+                "label": "Total Due",
+                "raw_text": "$20,500.00",
+                "value": "20500.00"
+              }
+            ],
+            "dates": [
+              {
+                "iso_date": "2024-03-12",
+                "raw_text": "12/03/2024",
+                "role": "issued"
+              },
+              {
+                "iso_date": "2024-04-11",
+                "raw_text": "11/04/2024",
+                "role": "due"
+              }
+            ],
+            "identifiers": [
+              {
+                "kind": "invoice_number",
+                "value": "HDS-2024-0417"
+              },
+              {
+                "kind": "po_number",
+                "value": "Number"
+              }
+            ],
+            "key_terms": [
+              "payment terms",
+              "late fee",
+              "net 30",
+              "gst"
+            ],
+            "parties": [
+              {
+                "name": "Northwind Logistics Pvt Ltd, Bengaluru, India",
+                "organization": true,
+                "role": "bill_to"
+              }
+            ]
+          },
+          "model_name": "fake-rules-v1",
+          "self_confidence": 5,
+          "warnings": [
+            {
+              "code": "mixed_currencies",
+              "field_path": "entities.amounts",
+              "message": "Amounts span 3 currencies (EUR, INR, USD); they must not be combined into one figure.",
+              "severity": "warn"
+            },
+            {
+              "code": "total_reconciliation_skipped",
+              "field_path": "entities.amounts",
+              "message": "1 USD amount(s) have no identified role, so the stated total could not be checked.",
+              "severity": "info"
+            }
+          ]
+        },
+        "intake": {
+          "char_count": 756,
+          "content_type": "text/plain",
+          "doc_id": "invoice_mixed_currency",
+          "line_count": 26,
+          "normalized_text": "HALCYON DATA SYSTEMS LLC\n1400 Market Street, Wilmington, DE 19801\n\nINVOICE\n\nInvoice No: HDS-2024-0417\nPO Number: NW-PO-88213\nInvoice date: 12/03/2024\nDue date: 11/04/2024\nPayment terms: Net 30\n\nBill To: Northwind Logistics Pvt Ltd, Bengaluru, India\n\nLINE ITEMS\n\nData pipeline engineering, 120 hours       $18,000.00\nEU data residency hosting, Q1              EUR 4.250,00\nOn-site workshop, Bengaluru, 3 days        Rs. 1,80,000\nSupport retainer, March                    $2,500.00\n\nSubtotal                                   $20,500.00\nGST 18% on India services                  Rs. 32,400\nTotal Due                                  $20,500.00\n\nRemit to: Halcyon Data Systems LLC, account ending 4417.\nLate fee of 1.5% per month applies after the due date.",
+          "ocr_artifacts_repaired": 0,
+          "original_char_count": 757,
+          "sections": [
+            {
+              "end_line": 3,
+              "heading": "HALCYON DATA SYSTEMS LLC",
+              "start_line": 1
+            },
+            {
+              "end_line": 13,
+              "heading": "INVOICE",
+              "start_line": 4
+            },
+            {
+              "end_line": 26,
+              "heading": "LINE ITEMS",
+              "start_line": 14
+            }
+          ],
+          "source_name": "invoice_mixed_currency.txt",
+          "truncated": false,
+          "warnings": [],
+          "word_count": 93
+        }
+      },
+      "kind": "step",
+      "llm_calls": [
+        {
+          "backend": "fake",
+          "confidence_reason": "",
+          "finish_reason": null,
+          "model": "fake-rules-v1",
+          "parsed": {
+            "bill_to": "Northwind Logistics Pvt Ltd, Bengaluru, India",
+            "bullets": [
+              "1400 Market Street, Wilmington, DE 19801",
+              "INVOICE",
+              "Invoice No: HDS-2024-0417",
+              "PO Number: NW-PO-88213",
+              "Invoice date: 12/03/2024"
+            ],
+            "confidence_reason": "",
+            "currencies_seen": [
+              "USD",
+              "EUR",
+              "INR"
+            ],
+            "due_date": "11/04/2024",
+            "headline": "HALCYON DATA SYSTEMS LLC",
+            "invoice_number": "HDS-2024-0417",
+            "issue_date": "12/03/2024",
+            "self_confidence": 3,
+            "total_stated": "$20,500.00",
+            "unresolved_questions": [],
+            "vendor": null
+          },
+          "parsing_error": null,
+          "prompt": "@sha256:<ref>",
+          "raw_response": "{\"self_confidence\":3,\"confidence_reason\":\"\",\"headline\":\"HALCYON DATA SYSTEMS LLC\",\"bullets\":[\"1400 Market Street, Wilmington, DE 19801\",\"INVOICE\",\"Invoice No: HDS-2024-0417\",\"PO Number: NW-PO-88213\",\"Invoice date: 12/03/2024\"],\"unresolved_questions\":[],\"vendor\":null,\"bill_to\":\"Northwind Logistics Pvt Ltd, Bengaluru, India\",\"invoice_number\":\"HDS-2024-0417\",\"issue_date\":\"12/03/2024\",\"due_date\":\"11/04/2024\",\"total_stated\":\"$20,500.00\",\"currencies_seen\":[\"USD\",\"EUR\",\"INR\"]}",
+          "schema_name": "InvoiceSummaryLLMOutput",
+          "self_confidence": 3,
+          "tokens": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "reasoning_tokens": null,
+            "total_tokens": null
+          }
+        }
+      ],
+      "name": "summarization",
+      "output": {
+        "bullets": [
+          "1400 Market Street, Wilmington, DE 19801",
+          "INVOICE",
+          "Invoice No: HDS-2024-0417",
+          "PO Number: NW-PO-88213",
+          "Invoice date: 12/03/2024"
+        ],
+        "confidence_reason": "",
+        "doc_id": "invoice_mixed_currency",
+        "doc_type": "invoice",
+        "headline": "HALCYON DATA SYSTEMS LLC",
+        "model_name": "fake-rules-v1",
+        "self_confidence": 3,
+        "type_specific": {
+          "bill_to": "Northwind Logistics Pvt Ltd, Bengaluru, India",
+          "confidence_reason": "",
+          "currencies_seen": [
+            "USD",
+            "EUR",
+            "INR"
+          ],
+          "due_date": "11/04/2024",
+          "invoice_number": "HDS-2024-0417",
+          "issue_date": "12/03/2024",
+          "self_confidence": 3,
+          "total_stated": "$20,500.00",
+          "vendor": null
+        },
+        "unresolved_questions": [],
+        "warnings": [
+          {
+            "code": "single_total_over_mixed_currencies",
+            "field_path": "type_specific.total_stated",
+            "message": "A single total '$20,500.00' is presented although amounts span ['EUR', 'INR', 'USD'].",
+            "severity": "warn"
+          }
+        ]
+      },
+      "self_confidence": 3,
+      "status": "degraded",
+      "step": "summarization",
+      "suspicion": 0.31,
+      "warnings": [
+        {
+          "code": "single_total_over_mixed_currencies",
+          "field_path": "type_specific.total_stated",
+          "message": "A single total '$20,500.00' is presented although amounts span ['EUR', 'INR', 'USD'].",
+          "severity": "warn"
+        }
+      ],
+      "worst_severity": "warn"
+    }
+  ],
+  "status": "degraded",
+  "tags": {},
+  "total_tokens": null
+}

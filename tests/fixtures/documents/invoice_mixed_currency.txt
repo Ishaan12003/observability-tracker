@@ -1,0 +1,26 @@
+HALCYON DATA SYSTEMS LLC
+1400 Market Street, Wilmington, DE 19801
+
+INVOICE
+
+Invoice No: HDS-2024-0417
+PO Number: NW-PO-88213
+Invoice date: 12/03/2024
+Due date: 11/04/2024
+Payment terms: Net 30
+
+Bill To: Northwind Logistics Pvt Ltd, Bengaluru, India
+
+LINE ITEMS
+
+Data pipeline engineering, 120 hours       $18,000.00
+EU data residency hosting, Q1              EUR 4.250,00
+On-site workshop, Bengaluru, 3 days        Rs. 1,80,000
+Support retainer, March                    $2,500.00
+
+Subtotal                                   $20,500.00
+GST 18% on India services                  Rs. 32,400
+Total Due                                  $20,500.00
+
+Remit to: Halcyon Data Systems LLC, account ending 4417.
+Late fee of 1.5% per month applies after the due date.

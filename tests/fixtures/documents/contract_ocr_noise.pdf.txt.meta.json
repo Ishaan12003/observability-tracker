@@ -1,0 +1,7 @@
+{
+  "doc_id": "contract_ocr_noise",
+  "expected_type": "contract",
+  "expected_failure": "ocr_damage",
+  "expected_warning_codes": ["ocr_artifacts_repaired"],
+  "notes": "Simulated PDF text extraction: digit 1 rendered as lowercase l, ligature substitutions, and hyphenated line-breaks splitting words ('Ma-\\nchine', 'busi-\\nness'). Step 1 must rejoin the hyphen breaks before step 2 reads the text, otherwise entity spans are corrupted and every span-grounding check downstream fires spuriously."
+}
